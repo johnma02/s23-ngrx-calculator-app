@@ -9,7 +9,7 @@ export interface State {
 }
 
 export const initialState: State = {
-  currentNumber: 0,
+  currentNumber: NaN,
   operand: 0,
   operator: '+',
 };
@@ -27,8 +27,6 @@ export const calculatorReducer = createReducer(
           return state.currentNumber / state.operand;
         case '-':
           return state.currentNumber - state.operand;
-        case '%':
-          return state.currentNumber % state.operand;
         default:
           return state.currentNumber;
       }
@@ -40,5 +38,7 @@ export const calculatorReducer = createReducer(
   on(CalculatorActions.changeOperator, (state: State, {newOperator}) => ({...state, operator: newOperator})),
 
   on(CalculatorActions.clearInput, (state: State) => ({...state, operand: 0})),
-  on(CalculatorActions.clearTotal, (state: State) => ({...state, currentNumber: 0}))
+  on(CalculatorActions.clearTotal, (state: State) => ({...state, currentNumber: 0})),
+
+  on(CalculatorActions.setOperand, (state: State, {newOperand}) => ({...state, operand: newOperand}))
 );

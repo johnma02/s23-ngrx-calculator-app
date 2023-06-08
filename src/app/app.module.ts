@@ -11,19 +11,19 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
 import { calculatorReducer } from './reducers/calculator.reducer';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MyCounterComponent,
-    CalculatorComponent
-  ],
-  imports: [
-    BrowserModule, 
-    StoreModule.forRoot({
-      count: counterReducer,
-      calculatorState: calculatorReducer
-    })
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		MyCounterComponent,
+		CalculatorComponent
+	],
+	imports: [
+		BrowserModule, 
+		StoreModule.forRoot({
+			count: counterReducer,
+			calculatorState: calculatorReducer
+		})
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

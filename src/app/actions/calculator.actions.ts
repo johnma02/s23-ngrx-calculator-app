@@ -6,6 +6,10 @@ export const clearTotal = createAction('[Calculator Component] Clear Total');
 export const calculate = createAction('[Calculator Component] Calculate');
 
 export const changeOperator = createAction(
-    '[Calculator Component] Change Operator',
-    props<{ newOperator: stringOperator }>()
+	'[Calculator Component] Change Operator',
+	props<{ newOperator: stringOperator }>()
+);
+
+export const setOperand = createAction('[Calculator Component] Set Operand',
+	props<{ newOperand: number }>()
 );

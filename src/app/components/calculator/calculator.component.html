@@ -3,4 +3,7 @@
 <div>
     Total: {{ currentNumber$ | async }}
     Operand: {{ operand$ | async }}
+    <div class="grid-container">
+        <button class="btn" *ngFor="let num of nums" (click)="setOperand(num)">{{num}}</button>
+    </div>
 </div>

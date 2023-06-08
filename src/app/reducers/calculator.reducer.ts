@@ -9,36 +9,36 @@ export interface State {
 }
 
 export const initialState: State = {
-  currentNumber: NaN,
-  operand: 0,
-  operator: '+',
+	currentNumber: NaN,
+	operand: 0,
+	operator: '+',
 };
 
 export const calculatorReducer = createReducer(
-  initialState,
-  on(CalculatorActions.calculate, (state: State) => {
-    const result: number = (() => {
-      switch (state.operator) {
-        case '+':
-          return state.currentNumber + state.operand;
-        case '*':
-          return state.currentNumber * state.operand;
-        case '/':
-          return state.currentNumber / state.operand;
-        case '-':
-          return state.currentNumber - state.operand;
-        default:
-          return state.currentNumber;
-      }
-    })();
+	initialState,
+	on(CalculatorActions.calculate, (state: State) => {
+		const result: number = (() => {
+			switch (state.operator) {
+			case '+':
+				return state.currentNumber + state.operand;
+			case '*':
+				return state.currentNumber * state.operand;
+			case '/':
+				return state.currentNumber / state.operand;
+			case '-':
+				return state.currentNumber - state.operand;
+			default:
+				return state.currentNumber;
+			}
+		})();
  
-    return {...state, currentNumber: result};
-  }),
+		return {...state, currentNumber: result};
+	}),
 
-  on(CalculatorActions.changeOperator, (state: State, {newOperator}) => ({...state, operator: newOperator})),
+	on(CalculatorActions.changeOperator, (state: State, {newOperator}) => ({...state, operator: newOperator})),
 
-  on(CalculatorActions.clearInput, (state: State) => ({...state, operand: 0})),
-  on(CalculatorActions.clearTotal, (state: State) => ({...state, currentNumber: 0})),
+	on(CalculatorActions.clearInput, (state: State) => ({...state, operand: 0})),
+	on(CalculatorActions.clearTotal, (state: State) => ({...state, currentNumber: 0})),
 
-  on(CalculatorActions.setOperand, (state: State, {newOperand}) => ({...state, operand: newOperand}))
+	on(CalculatorActions.setOperand, (state: State, {newOperand}) => ({...state, operand: newOperand}))
 );

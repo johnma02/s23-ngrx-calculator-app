@@ -1,0 +1,51 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: rgb(161, 184, 184);
+    padding: 10px;
+    border-radius: 10;
+    border-width: 1;
+  }
+ 
+  .btn {
+  display: inline-block;
+  padding: 12px 24px;
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Default Button Styles */
+.btn-default {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.btn-default:hover {
+  background-color: #eeeeee;
+}
+
+/* Primary Button Styles */
+.btn-primary {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Success Button Styles */
+.btn-success {
+  background-color: #28a745;
+  color: #ffffff;
+}
+
+.btn-success:hover {
+  background-color: #1a682c;
+}

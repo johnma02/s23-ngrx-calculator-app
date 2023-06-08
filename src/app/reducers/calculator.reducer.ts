@@ -39,4 +39,7 @@ export const scoreboardReducer = createReducer(
   }),
 
   on(CalculatorActions.changeOperator, (state: State, {newOperator}) => ({...state, operator: newOperator})),
+
+  on(CalculatorActions.clearInput, (state: State) => ({...state, operand: 0})),
+  on(CalculatorActions.clearTotal, (state: State) => ({...state, currentNumber: 0}))
 );

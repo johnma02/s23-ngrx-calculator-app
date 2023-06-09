@@ -34,7 +34,6 @@ jobs:
                   field: homepage
                   value: ${{ steps.get-repo-values.outputs.url }}
             - run: npm ci
-            - run: npm run build --if-present
 
             - name: Deploy
               run: |

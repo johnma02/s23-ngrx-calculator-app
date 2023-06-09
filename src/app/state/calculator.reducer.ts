@@ -6,6 +6,7 @@ export const initialState: CalculatorState = {
 	currentNumber: 0,
 	operand: 0,
 	operator: null,
+	decimalInput: false,
 };
 
 export const calculatorReducer = createReducer(
@@ -30,14 +31,25 @@ export const calculatorReducer = createReducer(
 		return {...state, currentNumber: result};
 	}),
 
-	on(CalculatorActions.changeOperator, (state: CalculatorState, {newOperator}) => ({...state, operator: newOperator})),
+	on(CalculatorActions.changeOperator, (state: CalculatorState, {newOperator}) => ({...state, operator: newOperator, decimalInput: false})),
 
 	on(CalculatorActions.clearInput, (state: CalculatorState) => ({...state, operand: 0})),
-	on(CalculatorActions.clearTotal, (): CalculatorState => ({currentNumber: 0, operator: null, operand: 0})),
+	on(CalculatorActions.clearTotal, (): CalculatorState => ({decimalInput: false, currentNumber: 0, operator: null, operand: 0})),
 
 	on(CalculatorActions.setOperand, (state: CalculatorState, {newOperand}) => {
+		if(state.decimalInput){
+			return state.operator === null ? 
+				state.currentNumber % 1 === 0 ?
+					{...state, currentNumber:  Number(state.currentNumber.toString()+'.' + newOperand.toString())} : 
+					{...state, currentNumber:  Number(state.currentNumber.toString() + newOperand.toString())} :
+				state.operand % 1 === 0 ? 
+					{...state, operand: Number(state.operand.toString()+'.' + newOperand.toString())} :
+					{...state, operand: Number(state.operand.toString()+ newOperand.toString())};
+		}
 		return state.operator === null ? 
 			{...state, currentNumber:  Number(state.currentNumber.toString() + newOperand.toString())} : 
 			{...state, operand: Number(state.operand.toString() + newOperand.toString())};
-	})
+	}),
+
+	on(CalculatorActions.makeDecimal, (state: CalculatorState) => ({...state, decimalInput: true}))
 );

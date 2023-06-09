@@ -15,7 +15,6 @@ export class CalculatorComponent {
 	operator$: Observable<stringOperator>;
 	operand$: Observable<number>;
 	currentNumber$: Observable<number>;
-	nums = Array.from(Array(10).keys());
  
 	constructor(private store: Store<{ count: number }>) {
 		this.operator$ = store.select(selectOperator);
@@ -39,5 +38,8 @@ export class CalculatorComponent {
 	}
 	setOperand(newOperand: number) {
 		this.store.dispatch(CalculatorActions.setOperand({newOperand}));
+	}
+	makeDecimal() {
+		this.store.dispatch(CalculatorActions.makeDecimal());
 	}
 }

@@ -4,5 +4,6 @@ declare module 'calculator-library' {
       currentNumber: number; // consider the accumulated state the first operand
       operand: number;
       operator: stringOperator;
+      decimalInput: boolean;
     }
   }

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 import { StoreModule } from '@ngrx/store';
 import { CalculatorComponent } from './components/calculator/calculator.component';
-import { calculatorReducer } from './reducers/calculator.reducer';
+import { calculatorReducer } from './state/calculator.reducer';
 
 @NgModule({
 	declarations: [
@@ -16,7 +16,7 @@ import { calculatorReducer } from './reducers/calculator.reducer';
 	imports: [
 		BrowserModule, 
 		StoreModule.forRoot({
-			calculatorState: calculatorReducer
+			calculator: calculatorReducer
 		})
 	],
 	providers: [],

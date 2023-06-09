@@ -9,7 +9,6 @@
 
 .grid-container .btn:nth-child(4n) {
   background-color: #44344F;
-  color: white
 }
   
   .calculator-screen {
@@ -34,7 +33,7 @@
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: lowercase;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -69,4 +68,9 @@
 
 .btn-success:hover {
   background-color: #1a682c;
+}
+
+.small-text {
+  font-size: 6px;
+  color: gray;
 }

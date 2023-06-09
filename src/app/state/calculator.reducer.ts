@@ -36,6 +36,8 @@ export const calculatorReducer = createReducer(
 	on(CalculatorActions.clearTotal, (state: CalculatorState) => ({...state, currentNumber: 0})),
 
 	on(CalculatorActions.setOperand, (state: CalculatorState, {newOperand}) => {
-		return state.currentNumber === 0 ? {...state, currentNumber: newOperand} : {...state, operand: newOperand};
+		return state.currentNumber === 0 ? 
+			{...state, currentNumber: newOperand} : 
+			{...state, operand: Number(state.operand.toString() + newOperand.toString())};
 	})
 );

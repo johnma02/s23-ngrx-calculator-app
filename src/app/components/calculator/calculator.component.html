@@ -2,8 +2,8 @@
 <div>
     <div class="calculator-screen">
     Total: {{currentNumber$ | async }}<br/>
-    Operand: {{ operand$ | async }}<br/>
-    Operator: {{ operator$ | async }}
+    Operator: {{ operator$ | async }}<br/>
+    Operand: {{ operand$ | async }}
     </div>
     <div class="grid-container">
         <button class="btn" *ngFor="let num of nums" (click)="setOperand(num)">{{num}}</button>

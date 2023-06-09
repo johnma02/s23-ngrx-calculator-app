@@ -1,21 +1,26 @@
 .grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    background-color: rgb(161, 184, 184);
+    background-color: #564D80;
     padding: 10px;
     border-radius: 10;
     border-width: 1;
   }
+
+.grid-container .btn:nth-child(4n) {
+  background-color: #44344F;
+  color: white
+}
   
   .calculator-screen {
-    background-color: cyan;
+    background-color: #98A6D4;
     font-family: monospace;
     height: 50px;
     border-top-width: 10px;
     border-left-width: 10px;
     border-right-width: 10px;
     border-style: solid;
-    border-color: rgb(161, 184, 184);
+    border-color: #564D80;
     padding: 10px;
     color: white;
     font-weight: bolder;
@@ -35,9 +40,6 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.grid-container .btn:nth-child(4n) {
-  background-color: #bfd6e5;
-}
 
 /* Default Button Styles */
 .btn-default {

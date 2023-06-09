@@ -31,6 +31,7 @@ export const calculatorReducer = createReducer(
 				return state.currentNumber;
 			}
 		})();
+		console.log(result);
  
 		return {...state, currentNumber: result};
 	}),

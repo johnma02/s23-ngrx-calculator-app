@@ -5,7 +5,7 @@ import { CalculatorState } from 'calculator-library';
 export const initialState: CalculatorState = {
 	currentNumber: 0,
 	operand: 0,
-	operator: '+',
+	operator: null,
 };
 
 export const calculatorReducer = createReducer(
@@ -33,11 +33,11 @@ export const calculatorReducer = createReducer(
 	on(CalculatorActions.changeOperator, (state: CalculatorState, {newOperator}) => ({...state, operator: newOperator})),
 
 	on(CalculatorActions.clearInput, (state: CalculatorState) => ({...state, operand: 0})),
-	on(CalculatorActions.clearTotal, (state: CalculatorState) => ({...state, currentNumber: 0})),
+	on(CalculatorActions.clearTotal, (): CalculatorState => ({currentNumber: 0, operator: null, operand: 0})),
 
 	on(CalculatorActions.setOperand, (state: CalculatorState, {newOperand}) => {
-		return state.currentNumber === 0 ? 
-			{...state, currentNumber: newOperand} : 
+		return state.operator === null ? 
+			{...state, currentNumber:  Number(state.currentNumber.toString() + newOperand.toString())} : 
 			{...state, operand: Number(state.operand.toString() + newOperand.toString())};
 	})
 );

@@ -6,14 +6,21 @@
     Operand: {{ operand$ | async }}
     </div>
     <div class="grid-container">
-        <button class="btn" *ngFor="let num of nums" (click)="setOperand(num)">{{num}}</button>
-        <!-- clear -->
+        <button class="btn" *ngFor="let num of [7,8,9]" (click)="setOperand(num)">{{num}}</button>
+        <button class="btn" (click)="changeOperator('+')">+</button>
+
+
+        <button class="btn" *ngFor="let num of [4,5,6]" (click)="setOperand(num)">{{num}}</button>
+        <button class="btn" (click)="changeOperator('-')">-</button>
+
+        <button class="btn" *ngFor="let num of [1,2,3]" (click)="setOperand(num)">{{num}}</button>
+        <button class="btn" (click)="changeOperator('*')">*</button>
+
+        <button class="btn" (click)="setOperand(0)">0</button>
+
         <button class="btn" (click)="clearInput()">CE</button>
         <button class="btn" (click)="clearTotal()">AC</button>
-        <!-- operators -->
-        <button class="btn" (click)="changeOperator('+')">+</button>
-        <button class="btn" (click)="changeOperator('-')">-</button>
-        <button class="btn" (click)="changeOperator('*')">*</button>
+        
         <button class="btn" (click)="changeOperator('/')">/</button>
 
         <button class="btn" (click)="calculate()">=</button>

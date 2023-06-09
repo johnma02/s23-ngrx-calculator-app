@@ -1,9 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
-import * as CalculatorActions from '../actions/calculator.actions';
+import  { CalculatorActions } from './calculator.actions';
 import { CalculatorState } from 'calculator-library';
 
 export const initialState: CalculatorState = {
-	currentNumber: NaN,
+	currentNumber: 0,
 	operand: 0,
 	operator: '+',
 };
@@ -35,5 +35,7 @@ export const calculatorReducer = createReducer(
 	on(CalculatorActions.clearInput, (state: CalculatorState) => ({...state, operand: 0})),
 	on(CalculatorActions.clearTotal, (state: CalculatorState) => ({...state, currentNumber: 0})),
 
-	on(CalculatorActions.setOperand, (state: CalculatorState, {newOperand}) => ({...state, operand: newOperand}))
+	on(CalculatorActions.setOperand, (state: CalculatorState, {newOperand}) => {
+		return state.currentNumber === 0 ? {...state, currentNumber: newOperand} : {...state, operand: newOperand};
+	})
 );

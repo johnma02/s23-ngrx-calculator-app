@@ -6,6 +6,21 @@
     border-radius: 10;
     border-width: 1;
   }
+  
+  .calculator-screen {
+    background-color: cyan;
+    font-family: monospace;
+    height: 50px;
+    border-top-width: 10px;
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-style: solid;
+    border-color: rgb(161, 184, 184);
+    padding: 10px;
+    color: white;
+    font-weight: bolder;
+  }
+  
  
   .btn {
   display: inline-block;

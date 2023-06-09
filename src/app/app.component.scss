@@ -1,7 +1,10 @@
 .main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: monospace;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  height: 100vh;
+}
+
   

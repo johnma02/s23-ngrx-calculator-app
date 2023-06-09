@@ -2,48 +2,42 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Store } from '@ngrx/store';
-import {calculate, clearInput, clearTotal, changeOperator, setOperand} from '../../actions/calculator.actions';
+import {CalculatorActions} from '../../state/calculator.actions';
 import { stringOperator } from 'calculator-library';
-import { selectCurrentNumber, selectOperand, selectOperator } from 'src/app/state/calculator.selectors';
+import { selectCurrentNumber, selectOperand, selectOperator } from '../../state/calculator.selectors';
 
 @Component({
 	selector: 'app-calculator',
 	templateUrl: './calculator.component.html',
 	styleUrls: ['./calculator.component.scss']
 })
-
 export class CalculatorComponent {
-	operand$: Observable<number>;
 	operator$: Observable<stringOperator>;
+	operand$: Observable<number>;
 	currentNumber$: Observable<number>;
-
-	// iota 0 ... 9 
-	nums = Array.from({ length: 10 }, (_, index) => index);
-  
-
-	constructor(private store: Store<{ 
-    operand: number,
-    operator: stringOperator,
-    currentNumber: number}>) {
-		this.operand$ = store.select(selectOperand);
+	nums = Array.from(Array(10).keys());
+ 
+	constructor(private store: Store<{ count: number }>) {
 		this.operator$ = store.select(selectOperator);
+		this.operand$ = store.select(selectOperand);
 		this.currentNumber$ = store.select(selectCurrentNumber);
 	}
-	calculate() {
-		this.store.dispatch(calculate());
+ 
+	changeOperator(newOperator: stringOperator) {
+		this.store.dispatch(CalculatorActions.changeOperator({newOperator}));
 	}
+ 
 	clearInput() {
-		this.store.dispatch(clearInput());
+		this.store.dispatch(CalculatorActions.clearInput());
 	}
+ 
 	clearTotal() {
-		this.store.dispatch(clearTotal());
+		this.store.dispatch(CalculatorActions.clearTotal());
 	}
-
-	changeOperator(newOperator: stringOperator){
-		this.store.dispatch(changeOperator({newOperator}));
+	calculate() {
+		this.store.dispatch(CalculatorActions.calculate());
 	}
-  
 	setOperand(newOperand: number) {
-		this.store.dispatch(setOperand({newOperand}));
+		this.store.dispatch(CalculatorActions.setOperand({newOperand}));
 	}
 }

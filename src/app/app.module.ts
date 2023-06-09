@@ -16,7 +16,7 @@ import { calculatorReducer } from './state/calculator.reducer';
 	imports: [
 		BrowserModule, 
 		StoreModule.forRoot({
-			calculator: calculatorReducer
+			CalculatorState: calculatorReducer
 		})
 	],
 	providers: [],

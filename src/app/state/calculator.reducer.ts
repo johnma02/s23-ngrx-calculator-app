@@ -1,14 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import * as CalculatorActions from '../actions/calculator.actions';
-import { stringOperator } from 'calculator-library';
+import { CalculatorState } from 'calculator-library';
 
-export interface State {
-  currentNumber: number; // consider the accumulated state the first operand
-  operand: number;
-  operator: stringOperator;
-}
-
-export const initialState: State = {
+export const initialState: CalculatorState = {
 	currentNumber: NaN,
 	operand: 0,
 	operator: '+',
@@ -16,7 +10,7 @@ export const initialState: State = {
 
 export const calculatorReducer = createReducer(
 	initialState,
-	on(CalculatorActions.calculate, (state: State) => {
+	on(CalculatorActions.calculate, (state: CalculatorState) => {
 		const result: number = (() => {
 			switch (state.operator) {
 			case '+':
@@ -36,10 +30,10 @@ export const calculatorReducer = createReducer(
 		return {...state, currentNumber: result};
 	}),
 
-	on(CalculatorActions.changeOperator, (state: State, {newOperator}) => ({...state, operator: newOperator})),
+	on(CalculatorActions.changeOperator, (state: CalculatorState, {newOperator}) => ({...state, operator: newOperator})),
 
-	on(CalculatorActions.clearInput, (state: State) => ({...state, operand: 0})),
-	on(CalculatorActions.clearTotal, (state: State) => ({...state, currentNumber: 0})),
+	on(CalculatorActions.clearInput, (state: CalculatorState) => ({...state, operand: 0})),
+	on(CalculatorActions.clearTotal, (state: CalculatorState) => ({...state, currentNumber: 0})),
 
-	on(CalculatorActions.setOperand, (state: State, {newOperand}) => ({...state, operand: newOperand}))
+	on(CalculatorActions.setOperand, (state: CalculatorState, {newOperand}) => ({...state, operand: newOperand}))
 );

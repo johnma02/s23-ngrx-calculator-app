@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import {calculate, clearInput, clearTotal, changeOperator, setOperand} from '../../actions/calculator.actions';
 import { stringOperator } from 'calculator-library';
+import { selectCurrentNumber, selectOperand, selectOperator } from 'src/app/state/calculator.selectors';
 
 @Component({
 	selector: 'app-calculator',
@@ -24,9 +25,9 @@ export class CalculatorComponent {
     operand: number,
     operator: stringOperator,
     currentNumber: number}>) {
-		this.operand$ = store.select('operand');
-		this.operator$ = store.select('operator');
-		this.currentNumber$ = store.select('currentNumber');
+		this.operand$ = store.select(selectOperand);
+		this.operator$ = store.select(selectOperator);
+		this.currentNumber$ = store.select(selectCurrentNumber);
 	}
 	calculate() {
 		this.store.dispatch(calculate());

@@ -33,7 +33,7 @@ export const calculatorReducer = createReducer(
 
 	on(CalculatorActions.changeOperator, (state: CalculatorState, {newOperator}) => ({...state, operator: newOperator, decimalInput: false})),
 
-	on(CalculatorActions.clearInput, (state: CalculatorState) => ({...state, operand: 0})),
+	on(CalculatorActions.clearInput, (state: CalculatorState) => ({...state, operand: 0, decimalInput: false})),
 	on(CalculatorActions.clearTotal, (): CalculatorState => ({decimalInput: false, currentNumber: 0, operator: null, operand: 0})),
 
 	// I am sorry.

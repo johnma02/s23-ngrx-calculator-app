@@ -7,7 +7,7 @@
     "build": "ng build --output-path docs --base-href /s23-ngrx-calculator-app/",
     "watch": "ng build --watch --configuration development",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist/s23-ngrx-calculator-app",
+    "deploy": "gh-pages -d docs",
     "test": "ng test"
   },
   "dependencies": {

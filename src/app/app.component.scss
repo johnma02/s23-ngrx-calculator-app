@@ -8,4 +8,12 @@
   background-color: #d3fcd5;
 }
 
-  
+.bottom-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  left: 30px;
+}

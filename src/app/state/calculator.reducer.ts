@@ -36,6 +36,8 @@ export const calculatorReducer = createReducer(
 	on(CalculatorActions.clearInput, (state: CalculatorState) => ({...state, operand: 0})),
 	on(CalculatorActions.clearTotal, (): CalculatorState => ({decimalInput: false, currentNumber: 0, operator: null, operand: 0})),
 
+	// I am sorry.
+
 	on(CalculatorActions.setOperand, (state: CalculatorState, {newOperand}) => {
 		if(state.decimalInput){
 			return state.operator === null ? 
@@ -51,5 +53,10 @@ export const calculatorReducer = createReducer(
 			{...state, operand: Number(state.operand.toString() + newOperand.toString())};
 	}),
 
-	on(CalculatorActions.makeDecimal, (state: CalculatorState) => ({...state, decimalInput: true}))
+	on(CalculatorActions.makeDecimal, (state: CalculatorState) => ({...state, decimalInput: true})),
+	on(CalculatorActions.negateNumber, (state: CalculatorState) => {
+		return state.operator === null ?
+			{...state, currentNumber: state.currentNumber * -1} :
+			{...state, operand: state.operand * -1};
+	})
 );

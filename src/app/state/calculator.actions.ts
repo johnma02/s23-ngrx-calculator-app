@@ -9,6 +9,7 @@ export const CalculatorActions = createActionGroup({
 		'Calculate': emptyProps(),
 		'Change Operator': props<{ newOperator: stringOperator }>(),
 		'Set Operand': props<{ newOperand: number }>(),
-		'Make Decimal': emptyProps,
+		'Make Decimal': emptyProps(),
+		'Negate Number': emptyProps()
 	},
 });

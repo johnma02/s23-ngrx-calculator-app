@@ -42,4 +42,7 @@ export class CalculatorComponent {
 	makeDecimal() {
 		this.store.dispatch(CalculatorActions.makeDecimal());
 	}
+	negateNumber() {
+		this.store.dispatch(CalculatorActions.negateNumber());
+	}
 }
